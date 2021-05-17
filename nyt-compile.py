@@ -59,4 +59,5 @@ filedata = filedata.replace('$DOWN$', downtxt)
 with open('tocompile.tex', 'w') as file:
     file.write(filedata)
 
-os.system("pdflatex tocompile.tex && mv tocompile.pdf " + "done.pdf" + " && rm tocompile.*")
+filename = "NYT_Crossword_" + str(date.year) + "-" + str(date.month) + "-" + str(date.day) + ".pdf"
+os.system("pdflatex tocompile.tex && mv tocompile.pdf " + filename + " && rm tocompile.*")
