@@ -63,14 +63,12 @@ def xwordinfo_scraper(date):
         cluetxt = aclues[c*2+1].contents[0][:-3]
         clueans = str(aclues[c*2+1].contents[1].string)
         data.across.append([cluenum, cluetxt, clueans])
-        #print(cluenum + ": " + cluetxt)
 
     for c in range(0,len(dclues)//2):
         cluenum = str(dclues[c*2].string)
         cluetxt = dclues[c*2+1].contents[0][:-3]
         clueans = str(dclues[c*2+1].contents[1].string)
         data.down.append([cluenum, cluetxt, clueans])
-        #print(cluenum + ": " + cluetxt)
 
     return data
 
