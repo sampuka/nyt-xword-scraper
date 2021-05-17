@@ -43,14 +43,32 @@ def xwordinfo_scraper(date):
         row = gridtable[r].contents[0:-1]
 
         for c in range(1,len(row)):
-            cell = row[c].contents
-            if len(cell) == 0:
-                data.grid[r].append(['#', ''])
-            elif len(cell) == 2:
-                if str(cell[0].string) == "None":
-                    data.grid[r].append([str(cell[1].string), ''])
-                else:
-                    data.grid[r].append([str(cell[1].string), cell[0].string])
+            cell = row[c]
+            if 'class' in cell.attrs:
+                classes = cell.attrs['class']
+            else:
+                classes = {}
+
+            if "black" in classes:
+                cl = '*'
+            elif "bigcircle" in classes:
+                cl = 'o'
+            elif "shade" in classes:
+                cl = 'gf'
+            else:
+                cl = 'f'
+
+            if cl == '*' or str(cell.contents[0].string) == 'None':
+                nm = ''
+            else:
+                nm = str(cell.contents[0].string)
+
+            if cl != '*':
+                lt = str(cell.contents[1].string)
+            else:
+                lt = 'X'
+
+            data.grid[r].append([cl, lt, nm])
 
     cluebox = soup.find(id="CPHContent_ClueBox").contents
     acluebox = cluebox[1]
@@ -73,7 +91,7 @@ def xwordinfo_scraper(date):
     return data
 
 if __name__ == "__main__":
-    yesterday = datetime.datetime.now()-datetime.timedelta(days=1)
+    yesterday = datetime.datetime.now()-datetime.timedelta(days=0)
     data = xwordinfo_scraper(yesterday)
 
     print(data.url)

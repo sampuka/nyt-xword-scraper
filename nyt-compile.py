@@ -24,13 +24,7 @@ gridtxt = ""
 
 for row in data.grid:
     for col in row:
-        gridtxt += "|"
-        if col[0] == '#':
-            gridtxt += "*    "
-        elif col[1] != '':
-            gridtxt += "["+str(col[1])+"]" + str(col[0])
-        else:
-            gridtxt += str(col[0]) + "    "
+        gridtxt += "|[" + col[2] + "][" + col[0] + "]" + col[1]
 
     gridtxt += "|.\n"
 
@@ -60,4 +54,5 @@ with open('tocompile.tex', 'w') as file:
     file.write(filedata)
 
 filename = "NYT_Crossword_" + str(date.year) + "-" + str(date.month) + "-" + str(date.day) + ".pdf"
+#os.system("pdflatex tocompile.tex && mv tocompile.pdf " + filename)
 os.system("pdflatex tocompile.tex && mv tocompile.pdf " + filename + " && rm tocompile.*")
