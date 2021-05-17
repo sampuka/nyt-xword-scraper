@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+
+%\usepackage{fontspec}
+\usepackage[unboxed,large]{cwpuzzle}
+\usepackage[textwidth=15cm,margin=1in]{geometry}
+\usepackage{tabularx}
+
+\begin{document}
+
+\begin{center}
+\LARGE{$TITLE$}\\
+\large{by $AUTHOR$ and edited by $EDITOR$}
+
+\end{center}
+\begin{Puzzle}{$WIDTH$}{$HEIGHT$}
+\large
+$GRID$
+\end{Puzzle}
+
+
+\newpage
+
+\begin{minipage}{0.45\textwidth}
+\begin{PuzzleClues}{\Large{\textbf{Across}}} \\
+\large{
+$ACROSS$
+}
+\end{PuzzleClues}
+\vfill
+\end{minipage}%
+\hfill
+\begin{minipage}{0.45\textwidth}
+%\begin{tabular}{|p{\textwidth}}
+\begin{PuzzleClues}{\Large{\textbf{Down}}} \\
+\large{
+$DOWN$
+}
+\end{PuzzleClues}
+\vfill
+%\end{tabular}
+\end{minipage}%
+
+\end{document}
