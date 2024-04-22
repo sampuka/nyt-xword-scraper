@@ -47,6 +47,12 @@ downtxt = downtxt.replace('_','\_')
 acrosstxt = acrosstxt.replace('%','\%')
 downtxt = downtxt.replace('%','\%')
 
+acrosstxt = acrosstxt.replace('∼','\\texttildelow')
+downtxt = downtxt.replace('~','\\texttildelow')
+
+acrosstxt = acrosstxt.replace('^','\\textasciicircum')
+downtxt = downtxt.replace('^','\\textasciicircum')
+
 filedata = filedata.replace('$ACROSS$', acrosstxt)
 filedata = filedata.replace('$DOWN$', downtxt)
 
