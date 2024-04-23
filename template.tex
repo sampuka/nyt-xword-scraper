@@ -1,25 +1,44 @@
 \documentclass[10pt]{article}
 
-%\usepackage{fontspec}
 \usepackage[unboxed,large]{cwpuzzle}
-\usepackage[textwidth=15cm,margin=1in]{geometry}
+\usepackage{geometry}
 \usepackage{tabularx}
 \usepackage{color}
+\usepackage{graphicx}
+
+\newgeometry{textwidth=15cm, margin=1in, left=0cm, right=0cm}
+
+\newsavebox{\puzzlebox}
+
+\newenvironment{Puzzle*}[3][1]
+ {%
+  \def\PuzzlePre{\begin{lrbox}{\puzzlebox}}%
+  \def\PuzzlePost{\end{lrbox}\scalebox{#1}{\usebox{\puzzlebox}}}%
+  \Puzzle{#2}{#3}%
+ }
+ {\endPuzzle}
 
 \definecolor{gray}{gray}{.9}\PuzzleDefineColorCell{g}{gray}
 
 \begin{document}
 
 \begin{center}
-\LARGE{$TITLE$}\\
-\large{by $AUTHOR$ and edited by $EDITOR$}
+\Huge{$TITLE$}\\
+\LARGE{by $AUTHOR$ and edited by $EDITOR$}
 
-\end{center}
-\begin{Puzzle}{$WIDTH$}{$HEIGHT$}
-\large
+\vspace{1cm}
+\hspace*{\fill}
+
+\noindent
+\setbox0=\hbox{%
+\begin{Puzzle*}{$WIDTH$}{$HEIGHT$}
 $GRID$
-\end{Puzzle}
+\end{Puzzle*}
+}
+\scalebox{1.55}{\copy0}
+\end{center}
 
+\newgeometry{textwidth=15cm, margin=1in, left=0.5in, right=0.5in}
 
 \newpage
 
