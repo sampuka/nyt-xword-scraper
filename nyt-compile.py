@@ -41,17 +41,11 @@ for clue in data.across:
 for clue in data.down:
     downtxt += "\\Clue{\\textbf{" + clue[0] + "}}{" + clue[2] + "}{" + clue[1] + "} \\\\\n"
 
-acrosstxt = acrosstxt.replace('_','\_')
-downtxt = downtxt.replace('_','\_')
+replace_list = [('_','\_'), ('%','\%'), ('$','\$'), ('∼','\\texttildelow'), ('^','\\textasciicircum')]
 
-acrosstxt = acrosstxt.replace('%','\%')
-downtxt = downtxt.replace('%','\%')
-
-acrosstxt = acrosstxt.replace('∼','\\texttildelow')
-downtxt = downtxt.replace('~','\\texttildelow')
-
-acrosstxt = acrosstxt.replace('^','\\textasciicircum')
-downtxt = downtxt.replace('^','\\textasciicircum')
+for (a,b) in replace_list:
+    acrosstxt = acrosstxt.replace(a,b)
+    downtxt = downtxt.replace(a,b)
 
 filedata = filedata.replace('$ACROSS$', acrosstxt)
 filedata = filedata.replace('$DOWN$', downtxt)
