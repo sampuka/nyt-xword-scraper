@@ -41,7 +41,7 @@ for clue in data.across:
 for clue in data.down:
     downtxt += "\\Clue{\\textbf{" + clue[0] + "}}{" + clue[2] + "}{" + clue[1] + "} \\\\\n"
 
-replace_list = [('_','\_'), ('%','\%'), ('$','\$'), ('∼','\\texttildelow'), ('^','\\textasciicircum'), ('Ω','$\Omega$')]
+replace_list = [('_','\_'), ('%','\%'), ('$','\$'), ('#','\#'), ('&','\&'), ('∼','\\texttildelow'), ('^','\\textasciicircum'), ('Ω','$\Omega$')]
 
 for (a,b) in replace_list:
     acrosstxt = acrosstxt.replace(a,b)
