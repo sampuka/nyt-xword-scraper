@@ -1,0 +1,64 @@
+\documentclass[10pt]{article}
+
+\usepackage[unboxed,large]{cwpuzzle}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{multicol}
+
+\newgeometry{textwidth=15cm, margin=1in, left=0cm, right=0cm}
+
+\newsavebox{\puzzlebox}
+
+\newenvironment{Puzzle*}[3][1]
+ {%
+  \def\PuzzlePre{\begin{lrbox}{\puzzlebox}}%
+  \def\PuzzlePost{\end{lrbox}\scalebox{#1}{\usebox{\puzzlebox}}}%
+  \Puzzle{#2}{#3}%
+ }
+ {\endPuzzle}
+
+\definecolor{gray}{gray}{.8}\PuzzleDefineColorCell{g}{gray}
+
+\begin{document}
+
+\begin{center}
+\Huge{$TITLE$}\\
+\LARGE{by $AUTHOR$ and edited by $EDITOR$}
+
+\vspace{1cm}
+\hspace*{\fill}
+
+\noindent
+\setbox0=\hbox{%
+\begin{Puzzle*}{$WIDTH$}{$HEIGHT$}
+$GRID$
+\end{Puzzle*}
+}
+\scalebox{1.1}{\copy0}
+\end{center}
+
+\newgeometry{textwidth=15cm, margin=1in, left=0.5in, right=0.5in}
+
+\newpage
+
+\begin{multicols}{2}
+\begin{PuzzleClues}{\Large{\textbf{Across}}} \\
+\large{
+$ACROSS$
+}
+\end{PuzzleClues}
+\end{multicols}
+    
+\newpage
+
+\begin{multicols}{2}
+\begin{PuzzleClues}{\Large{\textbf{Down}}} \\
+\large{
+$DOWN$
+}
+\end{PuzzleClues}
+\end{multicols}
+
+\end{document}

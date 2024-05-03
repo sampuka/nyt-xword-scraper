@@ -13,7 +13,12 @@ date = datetime.datetime(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]))
 
 data = xwordinfo_scraper(date)
 
-with open('template.tex', 'r') as file:
+template_file = 'template.tex'
+
+if date.weekday() == 6:
+    template_file = 'template-sunday.tex'
+
+with open(template_file, 'r') as file:
     filedata = file.read()
 
 filedata = filedata.replace('$TITLE$', data.title)
