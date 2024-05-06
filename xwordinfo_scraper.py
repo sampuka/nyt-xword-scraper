@@ -30,9 +30,8 @@ def xwordinfo_scraper(date):
     data = XWData()
     data.date = date
     data.url = url
-    data.title = str(soup.find(id="PuzTitle").string)
+    data.title = str(soup.find(id="PuzTitle").text)
     data.keyclue = str(soup.find(id="CPHContent_KeyClue").string)
-
     aegrid = soup.find(id="CPHContent_AEGrid")
     data.author = str(aegrid.contents[2].string)
     data.editor = str(aegrid.contents[5].string)
