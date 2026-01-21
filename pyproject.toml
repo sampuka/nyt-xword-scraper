@@ -1,0 +1,10 @@
+[project]
+name = "nyt-compile"
+version = "2.0.0"
+dependencies = [
+  "requests",
+  "bs4"
+]
+
+[project.scripts]
+nytcompile = "nytcompile.nytcompile:main"

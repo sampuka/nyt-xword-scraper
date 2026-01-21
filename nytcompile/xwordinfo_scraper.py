@@ -1,10 +1,7 @@
 import datetime
 import requests
 
-try:
-    from BeautifulSoup import BeautifulSoup
-except ImportError:
-    from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 
 class XWData:
     date = datetime.datetime(2000, 1, 1)
@@ -24,7 +21,12 @@ class XWData:
 
 def xwordinfo_scraper(date):
     url = "http://www.xwordinfo.com/Crossword?date="+str(date.month)+"/"+str(date.day)+"/"+str(date.year)
-    html = requests.get(url).text
+    # Without headers, the website doesn't want to respond
+    headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
+                  "(KHTML, like Gecko) Chrome/119.0 Safari/537.36"
+    }
+    html = requests.get(url, headers=headers).text
     soup = BeautifulSoup(html,features="html.parser")
 
     data = XWData()

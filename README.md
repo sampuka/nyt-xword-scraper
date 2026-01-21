@@ -2,4 +2,13 @@
 
 Scrapes XWordInfo and compiles printable pdfs. Very legal.
 
-Usage: python3 nyt-compile.py YYYY MM DD
+# Dependencies
+
+sudo apt install python3 python3-venv python3-pip texlive texlive-latex-extra
+
+# Usage
+
+python3 -m venv .venv  
+. .venv/bin/activate  
+pip install -e .
+nytcompile 2026 01 19

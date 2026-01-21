@@ -1,2 +1,4 @@
-*
-!.gitignore
+nytcompile/__pycache__/
+nyt_compile.egg-info/
+outputs/
+*.pdf
